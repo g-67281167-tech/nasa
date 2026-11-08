@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
+  <meta name="description" content="The Last Signal: Echoes Beyond the Stars - a cinematic educational space project by Bintulu Cosmic Hawks.">
+  <title>THE LAST SIGNAL | BINTULU COSMIC HAWKS</title>
+  <style>
+    :root {
+      --bg: #050914;
+      --bg2: #091426;
+      --panel: rgba(12, 26, 48, .88);
+      --panel2: rgba(16, 38, 65, .78);
+      --line: rgba(105, 205, 255, .25);
+      --cyan: #67dcff;
+      --blue: #368dff;
+      --purple: #a78bfa;
+      --text: #f3f8ff;
+      --muted: #a7b8ce;
+      --gold: #e9c98a;
+      --max: 1320px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 15% 12%, rgba(29, 91, 151, .24), transparent 34%),
+        radial-gradient(ellipse at 85% 34%, rgba(105, 54, 160, .16), transparent 30%),
+        radial-gradient(ellipse at 50% 82%, rgba(17, 87, 124, .14), transparent 38%),
+        var(--bg);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .23;
+      z-index: -1;
+      background-image:
+        radial-gradient(1px 1px at 8% 18%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 28% 72%, #fff 99%, transparent),
+        radial-gradient(2px 2px at 73% 23%, #d5efff 99%, transparent),
+        radial-gradient(1px 1px at 91% 64%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 48% 43%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 62% 89%, #fff 99%, transparent);
+      background-size: 420px 360px;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin: 0 auto; }
+    .topbar {
+      position: relative;
+      z-index: 5;
+      border-bottom: 1px solid rgba(103, 220, 255, .18);
+      background: rgba(4, 9, 20, .88);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 220px; }
+    .brand-mark {
+      width: 42px; height: 42px; border: 1px solid var(--cyan); border-radius: 50%;
+      display: grid; place-items: center; color: var(--cyan); font-size: 19px;
+      box-shadow: 0 0 22px rgba(103,220,255,.22), inset 0 0 16px rgba(103,220,255,.12);
+    }
+    .brand-name { font-size: 12px; letter-spacing: .2em; font-weight: 800; }
+    .brand-sub { color: var(--muted); font-size: 9px; letter-spacing: .22em; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links a { color: #c5d5e8; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover { color: var(--cyan); }
+    .eyebrow { color: var(--cyan); font-size: 10px; letter-spacing: .3em; text-transform: uppercase; font-weight: 700; }
+    .section { padding: 88px 0; position: relative; }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading h2 { margin: 8px 0 8px; font-size: clamp(27px, 4vw, 43px); letter-spacing: .07em; line-height: 1.1; text-transform: uppercase; }
+    .section-heading p { color: var(--muted); max-width: 720px; margin: 0; font-size: 14px; }
+    .glow-line { height: 1px; width: 100%; background: linear-gradient(90deg, transparent, var(--cyan), rgba(167,139,250,.5), transparent); opacity: .7; }
+
+    /* OFFICIAL TRAILER: replace the placeholder inside .trailer-screen with your video or YouTube iframe. */
+    .trailer-hero {
+      min-height: 620px;
+      padding: 78px 0 58px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(3,8,18,.20), rgba(3,8,18,.76)),
+        radial-gradient(ellipse at 50% 80%, rgba(24, 126, 191, .34), transparent 45%),
+        radial-gradient(ellipse at 50% 10%, rgba(79, 54, 144, .23), transparent 45%);
+    }
+    .trailer-hero::before {
+      content: ""; position: absolute; width: 560px; height: 560px; border-radius: 50%;
+      right: -160px; top: -245px; border: 1px solid rgba(103,220,255,.16);
+      box-shadow: 0 0 90px rgba(55,147,220,.12), inset 0 0 70px rgba(55,147,220,.08);
+    }
+    .trailer-hero::after {
+      content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%;
+      left: -190px; bottom: -240px; border: 1px solid rgba(167,139,250,.22);
+      box-shadow: 0 0 100px rgba(167,139,250,.12);
+    }
+    .trailer-content { position: relative; z-index: 1; text-align: center; width: 100%; }
+    .movie-kicker { color: #b9d8f1; font-size: 11px; letter-spacing: .42em; text-transform: uppercase; }
+    .main-title {
+      margin: 12px 0 0; font-size: clamp(42px, 8vw, 94px); line-height: .98;
+      font-weight: 900; letter-spacing: .075em; text-transform: uppercase;
+      text-shadow: 0 0 32px rgba(74,193,255,.28);
+    }
+    .main-title span { color: var(--cyan); }
+    .main-subtitle { margin: 16px 0 30px; color: #c4d6e9; font-size: clamp(12px, 2vw, 17px); letter-spacing: .36em; text-transform: uppercase; }
+    .trailer-frame {
+      width: min(1060px, 100%); margin: 0 auto; padding: 1px; border-radius: 13px;
+      background: linear-gradient(135deg, rgba(103,220,255,.85), rgba(89,107,180,.35), rgba(167,139,250,.7));
+      box-shadow: 0 0 45px rgba(35,155,220,.19);
+    }
+    .trailer-screen {
+      aspect-ratio: 16 / 9; width: 100%; border-radius: 12px; overflow: hidden; position: relative;
+      display: grid; place-items: center; background:
+        linear-gradient(135deg, rgba(5,15,30,.82), rgba(3,8,19,.95)),
+        radial-gradient(circle at 50% 50%, rgba(46,135,191,.25), transparent 55%);
+    }
+    .trailer-screen::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent 0 4px, rgba(255,255,255,.018) 5px); pointer-events: none; }
+    .media-placeholder { padding: 25px; text-align: center; color: #c5d8ea; }
+    .play-symbol {
+      width: 72px; height: 72px; border: 1px solid var(--cyan); border-radius: 50%; margin: 0 auto 17px;
+      display: grid; place-items: center; color: var(--cyan); font-size: 25px; padding-left: 4px;
+      box-shadow: 0 0 28px rgba(103,220,255,.22), inset 0 0 20px rgba(103,220,255,.08);
+    }
+    .media-placeholder strong { display: block; color: #fff; letter-spacing: .22em; font-size: 14px; }
+    .media-placeholder small { display: block; color: #8fa9c2; font-size: 10px; letter-spacing: .12em; margin-top: 9px; }
+    .trailer-caption { color: #8fa9c2; font-size: 10px; letter-spacing: .16em; margin-top: 16px; text-transform: uppercase; }
+    .scroll-cue { display: inline-block; margin-top: 28px; color: #9bb4cc; font-size: 9px; letter-spacing: .24em; text-transform: uppercase; }
+
+    /* GAME */
+    .game-section { background: linear-gradient(180deg, rgba(7,18,34,.95), rgba(5,10,22,.94)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .game-layout { display: grid; grid-template-columns: .85fr 1.5fr; gap: 34px; align-items: center; }
+    .game-copy h2 { font-size: clamp(28px, 4vw, 46px); line-height: 1.05; margin: 10px 0; letter-spacing: .05em; }
+    .game-copy h2 span { color: var(--cyan); }
+    .game-copy p { color: var(--muted); font-size: 14px; }
+    .game-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .tag { border: 1px solid rgba(103,220,255,.3); color: #b8eaff; border-radius: 30px; padding: 6px 11px; font-size: 9px; letter-spacing: .12em; }
+    .game-frame { padding: 1px; border-radius: 12px; background: linear-gradient(135deg, var(--cyan), rgba(167,139,250,.6)); box-shadow: 0 0 35px rgba(54,141,255,.12); }
+    .game-screen { aspect-ratio: 4 / 3; border-radius: 11px; overflow: hidden; background: #050b17; display: grid; place-items: center; }
+    .game-screen iframe { display: block; width: 100%; height: 100%; border: 0; }
+
+    /* HISTORY */
+    .history-section { background: linear-gradient(180deg, rgba(5,9,20,.98), rgba(7,17,33,.98)); }
+    .history-layout { display: grid; grid-template-columns: 285px minmax(0, 1fr); gap: 25px; align-items: stretch; }
+    .mission-list { border: 1px solid var(--line); border-radius: 12px; background: rgba(9,21,39,.8); padding: 12px; }
+    .mission-list-title { color: #89a9c7; font-size: 9px; letter-spacing: .22em; padding: 10px 12px 14px; text-transform: uppercase; }
+    .mission-button {
+      display: block; width: 100%; text-align: left; border: 1px solid transparent; border-radius: 8px;
+      color: #c4d4e5; background: transparent; padding: 14px 13px; cursor: pointer; transition: .2s; margin-bottom: 5px;
+    }
+    .mission-button:hover { background: rgba(103,220,255,.07); color: #fff; }
+    .mission-button.active { border-color: rgba(103,220,255,.4); background: linear-gradient(90deg, rgba(39,130,185,.2), rgba(103,220,255,.04)); color: #fff; box-shadow: inset 3px 0 0 var(--cyan); }
+    .mission-button strong { display: block; font-size: 12px; letter-spacing: .09em; }
+    .mission-button span { display: block; color: #819ab3; font-size: 10px; margin-top: 3px; }
+    .history-detail { min-height: 510px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--panel); }
+    .history-visual {
+      min-height: 220px; display: flex; align-items: end; padding: 22px 26px;
+      background: radial-gradient(ellipse at 72% 20%, rgba(81,163,210,.25), transparent 35%), linear-gradient(120deg, rgba(13,36,62,.92), rgba(5,13,28,.95));
+      border-bottom: 1px solid var(--line); position: relative; overflow: hidden;
+    }
+    .history-visual::after { content: ""; position: absolute; width: 260px; height: 260px; right: 8%; top: -110px; border-radius: 50%; border: 1px solid rgba(103,220,255,.2); box-shadow: 0 0 70px rgba(103,220,255,.12), inset 0 0 50px rgba(103,220,255,.08); }
+    .history-visual-label { position: relative; z-index: 1; }
+    .history-visual-label span { color: var(--cyan); font-size: 9px; letter-spacing: .25em; text-transform: uppercase; }
+    .history-visual-label h3 { margin: 5px 0 0; font-size: clamp(24px, 4vw, 38px); letter-spacing: .08em; text-transform: uppercase; }
+    .history-body { padding: 25px 28px 28px; }
+    .history-meta { color: var(--cyan); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; }
+    .history-body h4 { margin: 10px 0 9px; font-size: 20px; }
+    .history-body p { color: #b2c1d2; font-size: 13px; margin: 0 0 15px; }
+    .fact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 18px; }
+    .fact { border: 1px solid rgba(103,220,255,.16); border-radius: 8px; background: rgba(5,14,27,.5); padding: 12px; }
+    .fact b { display: block; color: #83dcff; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 5px; }
+    .fact span { color: #d0dceb; font-size: 11px; }
+    .history-media-slots { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .slot-link { color: #bdeaff; border: 1px solid rgba(103,220,255,.27); border-radius: 30px; padding: 7px 11px; font-size: 9px; letter-spacing: .1em; }
+    .accuracy-note { color: #849bb2; font-size: 10px; margin-top: 20px; border-left: 2px solid var(--gold); padding-left: 12px; }
+
+    /* ABOUT MOVIE */
+    .about-section { background: radial-gradient(ellipse at 15% 50%, rgba(42,94,148,.17), transparent 40%), #071020; border-top: 1px solid var(--line); }
+    .about-layout { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 42px; align-items: start; }
+    .poster-placeholder {
+      min-height: 430px; border: 1px solid rgba(103,220,255,.35); border-radius: 10px; padding: 24px 18px;
+      display: flex; flex-direction: column; justify-content: space-between; text-align: center;
+      background: radial-gradient(circle at 50% 42%, rgba(52,140,194,.35), transparent 37%), linear-gradient(160deg, #132e4b, #050a17 70%);
+      box-shadow: 0 18px 50px rgba(0,0,0,.25), 0 0 30px rgba(54,141,255,.1);
+    }
+    .poster-placeholder .poster-small { color: #a9cde5; font-size: 9px; letter-spacing: .25em; }
+    .poster-placeholder .poster-title { font-size: 30px; font-weight: 900; line-height: .98; letter-spacing: .08em; text-shadow: 0 0 20px rgba(103,220,255,.35); }
+    .poster-placeholder .poster-title span { color: var(--cyan); }
+    .poster-placeholder .poster-foot { color: #8ba7c1; font-size: 8px; letter-spacing: .18em; }
+    .about-copy h2 { font-size: clamp(28px, 4vw, 43px); margin: 7px 0 16px; letter-spacing: .06em; }
+    .about-copy p { color: #b5c5d7; font-size: 14px; }
+    .movie-info { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 23px 0; }
+    .info-item { border-bottom: 1px solid rgba(103,220,255,.17); padding: 10px 0; }
+    .info-item b { display: block; color: #75d9ff; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; }
+    .info-item span { color: #d2deea; font-size: 12px; }
+    .character-list { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 15px; }
+    .character { border: 1px solid rgba(103,220,255,.18); background: rgba(12,28,49,.65); padding: 13px; border-radius: 8px; }
+    .character b { display: block; font-size: 11px; color: #fff; }
+    .character span { display: block; font-size: 10px; color: #91a9c0; margin-top: 4px; }
+    .fiction-label { display: inline-block; border: 1px solid rgba(167,139,250,.5); color: #d2c2ff; border-radius: 30px; padding: 6px 11px; font-size: 9px; letter-spacing: .14em; margin-top: 8px; }
+
+    /* KUCHI: THE MOON REPAIR CAT - ANIMATED SERIES */
+    .kuchi-section {
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 12% 42%, rgba(43, 140, 190, .22), transparent 38%),
+        radial-gradient(ellipse at 88% 55%, rgba(125, 76, 190, .18), transparent 34%),
+        linear-gradient(180deg, #071426, #050914 88%);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .kuchi-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 38px;
+      align-items: center;
+    }
+    .kuchi-art-frame {
+      min-height: 450px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(103, 220, 255, .42);
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 50% 36%, rgba(116, 203, 255, .25), transparent 22%),
+        radial-gradient(ellipse at 50% 100%, rgba(129, 91, 184, .35), transparent 45%),
+        linear-gradient(155deg, #173655, #091426 58%, #050914);
+      box-shadow: 0 18px 55px rgba(0, 0, 0, .32), 0 0 38px rgba(54, 141, 255, .13);
+    }
+    .kuchi-art-frame::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 290px;
+      height: 290px;
+      right: -55px;
+      top: -75px;
+      border-radius: 50%;
+      border: 1px solid rgba(170, 222, 255, .42);
+      background: radial-gradient(circle at 35% 30%, rgba(223, 244, 255, .2), rgba(91, 143, 185, .08) 48%, transparent 70%);
+      box-shadow: 0 0 75px rgba(103, 220, 255, .2), inset 0 0 45px rgba(103, 220, 255, .1);
+    }
+    .kuchi-art-frame::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      left: -10%;
+      right: -10%;
+      bottom: -105px;
+      height: 220px;
+      border-radius: 50% 50% 0 0;
+      border-top: 1px solid rgba(160, 216, 255, .3);
+      background: linear-gradient(180deg, rgba(92, 132, 170, .22), rgba(13, 28, 48, .95));
+      box-shadow: 0 -15px 55px rgba(103, 220, 255, .08);
+    }
+    .kuchi-art-content {
+      width: 100%;
+      min-height: 450px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+    .kuchi-art-orbit {
+      color: #bdeaff;
+      font-size: 9px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+    .kuchi-cat-symbol {
+      font-size: clamp(92px, 13vw, 150px);
+      line-height: 1.2;
+      margin: 25px 0 15px;
+      filter: drop-shadow(0 0 25px rgba(103, 220, 255, .4));
+    }
+    .kuchi-art-title {
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-shadow: 0 0 18px rgba(103, 220, 255, .35);
+    }
+    .kuchi-art-hint {
+      color: #9bb8d0;
+      font-size: 9px;
+      letter-spacing: .12em;
+      margin-top: 9px;
+      text-transform: uppercase;
+    }
+    .kuchi-copy h2 {
+      margin: 9px 0 13px;
+      font-size: clamp(30px, 4.2vw, 49px);
+      line-height: 1.04;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+    .kuchi-copy h2 span { color: var(--cyan); }
+    .kuchi-tagline {
+      color: #e1f6ff;
+      font-size: clamp(15px, 2vw, 19px);
+      font-weight: 700;
+      line-height: 1.45;
+      margin: 0 0 18px;
+      text-shadow: 0 0 18px rgba(103, 220, 255, .17);
+    }
+    .kuchi-copy p:not(.kuchi-tagline) { color: #b3c4d7; font-size: 14px; }
+    .kuchi-series-label {
+      display: inline-block;
+      margin-top: 8px;
+      border: 1px solid rgba(167, 139, 250, .48);
+      border-radius: 30px;
+      color: #d8caff;
+      padding: 6px 11px;
+      font-size: 9px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .kuchi-facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 22px 0;
+    }
+    .kuchi-fact {
+      border: 1px solid rgba(103, 220, 255, .18);
+      border-radius: 8px;
+      background: rgba(8, 21, 39, .68);
+      padding: 11px 13px;
+    }
+    .kuchi-fact b {
+      display: block;
+      color: #80ddff;
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .kuchi-fact span { color: #d0deeb; font-size: 11px; }
+    .kuchi-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .kuchi-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      border: 1px solid rgba(103, 220, 255, .55);
+      border-radius: 5px;
+      padding: 10px 15px;
+      color: #e8f9ff;
+      background: rgba(31, 113, 158, .2);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+    .kuchi-button:hover { background: rgba(56, 164, 215, .28); box-shadow: 0 0 22px rgba(103, 220, 255, .15); }
+    .kuchi-button.secondary { border-color: rgba(167, 139, 250, .48); color: #d9ceff; background: rgba(100, 72, 145, .13); }
+    .kuchi-media { margin-top: 46px; }
+    .kuchi-media-heading { margin-bottom: 16px; color: #a8c0d8; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; }
+    .kuchi-media-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .kuchi-media-card {
+      min-width: 0;
+      border: 1px solid rgba(103, 220, 255, .2);
+      border-radius: 10px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(17, 42, 69, .8), rgba(6, 14, 28, .94));
+    }
+    .kuchi-media-slot {
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      padding: 15px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(103, 220, 255, .17), transparent 40%),
+        linear-gradient(135deg, rgba(18, 49, 78, .95), rgba(5, 12, 25, .98));
+      color: #8fe2ff;
+      font-size: 10px;
+      letter-spacing: .14em;
+    }
+    .kuchi-media-slot span { display: block; color: #9bb3c9; font-size: 8px; letter-spacing: .1em; margin-top: 6px; }
+    .kuchi-media-card h3 { margin: 0; padding: 13px 14px 5px; font-size: 11px; letter-spacing: .1em; }
+    .kuchi-media-card p { margin: 0; padding: 0 14px 14px; color: #91a6bc; font-size: 10px; }
+
+    /* ARCHIVE + FOOTER */
+    .archive-section { background: #050a15; border-top: 1px solid var(--line); }
+    .archive-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .archive-card { min-height: 155px; border: 1px solid var(--line); border-radius: 10px; padding: 20px; background: linear-gradient(145deg, rgba(17,42,69,.75), rgba(6,14,28,.9)); }
+    .archive-card .icon { color: var(--cyan); font-size: 23px; }
+    .archive-card h3 { margin: 10px 0 5px; font-size: 13px; letter-spacing: .1em; }
+    .archive-card p { color: #91a6bc; font-size: 11px; margin: 0; }
+    .footer { border-top: 1px solid var(--line); padding: 30px 0; background: #030711; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer strong { font-size: 11px; letter-spacing: .18em; }
+    .footer span { color: #71879f; font-size: 10px; }
+
+    @media (max-width: 850px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 17px 0; gap: 15px; }
+      .nav-links { justify-content: flex-start; gap: 14px; }
+      .trailer-hero { min-height: auto; padding: 65px 0 45px; }
+      .game-layout, .about-layout { grid-template-columns: 1fr; }
+      .game-copy { max-width: 650px; }
+      .about-layout { gap: 25px; }
+      .kuchi-layout { grid-template-columns: 1fr; }
+      .kuchi-art-frame, .kuchi-art-content { min-height: 370px; }
+      .kuchi-media-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .poster-placeholder { min-height: 340px; max-width: 300px; width: 100%; margin: 0 auto; }
+      .history-layout { grid-template-columns: 1fr; }
+      .mission-list { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 5px; }
+      .mission-list-title { grid-column: 1 / -1; }
+      .mission-button { margin: 0; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav-links { gap: 10px 14px; }
+      .nav-links a { font-size: 9px; }
+      .brand { min-width: 0; }
+      .main-title { font-size: clamp(36px, 11vw, 58px); }
+      .main-subtitle { letter-spacing: .2em; }
+      .section { padding: 60px 0; }
+      .history-body { padding: 20px; }
+      .history-visual { min-height: 175px; }
+      .fact-grid, .movie-info { grid-template-columns: 1fr; }
+      .character-list, .archive-grid { grid-template-columns: 1fr; }
+      .kuchi-facts, .kuchi-media-grid { grid-template-columns: 1fr; }
+      .kuchi-art-frame, .kuchi-art-content { min-height: 320px; }
+      .kuchi-copy h2 { font-size: 32px; }
+      .mission-list { grid-template-columns: 1fr 1fr; }
+      .mission-button { padding: 11px 9px; }
+      .mission-button strong { font-size: 10px; }
+      .mission-button span { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="The Last Signal home">
+        <div class="brand-mark">✦</div>
+        <div>
+          <div class="brand-name">BINTULU COSMIC HAWKS</div>
+          <div class="brand-sub">NASA SPACE APPS CHALLENGE 2026</div>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#trailer">Trailer</a>
+        <a href="#kuchi">Kuchi Series</a>
+        <a href="#game">Game</a>
+        <a href="#history">Real History</a>
+        <a href="#about">The Movie</a>
+        <a href="#archives">Archives</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 1. OFFICIAL TRAILER: Replace the placeholder below with your MP4 video or YouTube embed. -->
+    <section class="trailer-hero" id="trailer">
+      <div class="container trailer-content">
+        <div class="movie-kicker">A cinematic space exploration experience</div>
+        <h1 class="main-title">THE LAST <span>SIGNAL</span></h1>
+        <div class="main-subtitle">Echoes Beyond the Stars</div>
+        <div class="trailer-frame">
+          <div class="trailer-screen">
+          <iframe
+  src="https://www.youtube.com/watch?v=nvtkMfZwJ_0"
+  title="The Last Signal Official Trailer"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen
+  style="width:100%;height:100%;border:0;display:block;">
+</iframe>
+            <!--
+              OPTION A - LOCAL MP4 VIDEO:
+              Replace the .media-placeholder above with:
+              <video controls playsinline style="width:100%;height:100%;object-fit:cover;">
+                <source src="assets/the-last-signal-trailer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+              OPTION B - YOUTUBE:
+              Replace the .media-placeholder above with:
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                title="The Last Signal Official Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen style="width:100%;height:100%;border:0;"></iframe>
+            -->
+          </div>
+        </div>
+        <div class="trailer-caption">An original educational science-fiction project by Bintulu Cosmic Hawks</div>
+        <a class="scroll-cue" href="#kuchi">Discover Kuchi Series ↓</a>
+      </div>
+    </section>
+
+    <!-- 2. KUCHI ANIMATED SERIES: Replace the character-art and media placeholders with your official artwork and videos. -->
+    <section class="section kuchi-section" id="kuchi">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A new lunar adventure</div>
+          <h2>Meet the Animated Series</h2>
+          <p>A separate animated adventure from the Bintulu Cosmic Hawks creative universe.</p>
+        </div>
+
+        <div class="kuchi-layout">
+          <div class="kuchi-art-frame">
+            <div class="kuchi-art-content">
+              <div class="kuchi-art-orbit">LUNAR REPAIR UNIT · MOON BASE</div>
+              <!-- Replace the temporary cat symbol with your official Kuchi artwork, for example:
+              <img src="assets/kuchi-key-art.png" alt="Kuchi, the Moon Repair Cat" style="width:100%;height:100%;object-fit:contain;">
+              -->
+              <div class="kuchi-cat-symbol" aria-hidden="true">🐈</div>
+              <div class="kuchi-art-title">KUCHI CHARACTER ARTWORK</div>
+              <div class="kuchi-art-hint">Replace this frame with the official series poster or character image</div>
+            </div>
+          </div>
+
+          <div class="kuchi-copy">
+            <div class="eyebrow">Original animated series</div>
+            <h2>KUCHI: THE <span>MOON REPAIR CAT</span></h2>
+            <p class="kuchi-tagline">“One Small Cat. One Big Mission. A Cleaner Moon!”</p>
+            <span class="kuchi-series-label">ANIMATED SERIES · LUNAR ADVENTURE</span>
+            <p>Meet Kuchi, a small cat with a big mission on the Moon. Follow this curious lunar helper as the series explores repair, discovery and the idea that even small actions can help create a cleaner Moon.</p>
+            <p>Through short animated adventures, Kuchi brings space exploration to life while encouraging audiences to think about caring for equipment, reusing resources and looking after the environment beyond Earth.</p>
+
+            <div class="kuchi-facts">
+              <div class="kuchi-fact"><b>Series title</b><span>Kuchi: The Moon Repair Cat</span></div>
+              <div class="kuchi-fact"><b>Setting</b><span>The Moon · Lunar exploration</span></div>
+              <div class="kuchi-fact"><b>Core themes</b><span>Repair · Discovery · Sustainability</span></div>
+              <div class="kuchi-fact"><b>Tagline</b><span>One Small Cat. One Big Mission. A Cleaner Moon!</span></div>
+            </div>
+            <div class="kuchi-actions">
+              <a class="kuchi-button" href="#kuchi-media">Explore the Series ↓</a>
+              <a class="kuchi-button secondary" href="#archives">Project Archives</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="kuchi-media" id="kuchi-media">
+          <div class="kuchi-media-heading">Kuchi Series · Media & Episodes</div>
+          <div class="kuchi-media-grid">
+            <div class="kuchi-media-card">
+              <div class="kuchi-media-slot">▶<span>ADD OFFICIAL SERIES TRAILER</span></div>
+              <h3>SERIES TRAILER</h3>
+              <p>Insert the Kuchi animated-series trailer or introduction video.</p>
+            </div>
+            <div class="kuchi-media-card">
+              <div class="kuchi-media-slot">✦<span>ADD EPISODE VIDEO</span></div>
+              <h3>EPISODE SHOWCASE</h3>
+              <p>Use this space to introduce individual episodes as they are completed.</p>
+            </div>
+            <div class="kuchi-media-card">
+              <div class="kuchi-media-slot">▧<span>ADD CHARACTER & PRODUCTION IMAGES</span></div>
+              <h3>CHARACTER & ART GALLERY</h3>
+              <p>Add Kuchi character designs, lunar locations, storyboards and production stills.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GAME: Replace the game placeholder with your Scratch project embed iframe. -->
+    <section class="section game-section" id="game">
+      <div class="container game-layout">
+        <div class="game-copy">
+          <div class="eyebrow">Interactive mission</div>
+          <h2>PROJECT LEGACY:<br><span>VECTOR RESCUE</span></h2>
+          <p>Take command of the Odyssey and face the challenges of a rescue mission beyond the stars. Test your navigation decisions, avoid space hazards and guide the mission to safety.</p>
+          <div class="game-tags">
+            <span class="tag">SCRATCH GAME</span>
+            <span class="tag">MISSION CONTROL</span>
+            <span class="tag">SPACE SURVIVAL</span>
+          </div>
+        </div>
+        <div class="game-frame">
+          <div class="game-screen">
+            <div class="media-placeholder">
+              <div class="play-symbol">▶</div>
+              <strong>VECTOR RESCUE</strong>
+              <small>SCRATCH GAME EMBED FRAME</small>
+            </div>
+            <!-- Replace the placeholder above with your Scratch embed code, for example:
+            <iframe src="https://scratch.mit.edu/projects/PROJECT_ID/embed"
+              allowtransparency="true" width="100%" height="100%" frameborder="0" scrolling="no" allowfullscreen></iframe>
+            -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. REAL NASA HISTORY: Select a mission on the left to display its details on the right. -->
+    <section class="section history-section" id="history">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">The real missions behind the story</div>
+          <h2>Real NASA History</h2>
+          <p>Explore real spacecraft, instruments and discoveries that continue to expand our understanding of the Moon, Mars and deep space.</p>
+        </div>
+        <div class="history-layout">
+          <aside class="mission-list" aria-label="NASA mission list">
+            <div class="mission-list-title">Select a mission</div>
+            <button class="mission-button active" data-mission="apollo" type="button" aria-pressed="true">
+              <strong>01 / APOLLO 11</strong><span>1969 · THE MOON</span>
+            </button>
+            <button class="mission-button" data-mission="opportunity" type="button" aria-pressed="false">
+              <strong>02 / OPPORTUNITY</strong><span>2004-2018 · MARS</span>
+            </button>
+            <button class="mission-button" data-mission="insight" type="button" aria-pressed="false">
+              <strong>03 / INSIGHT</strong><span>2018-2022 · MARS</span>
+            </button>
+            <button class="mission-button" data-mission="voyager" type="button" aria-pressed="false">
+              <strong>04 / VOYAGER 1</strong><span>1977-PRESENT · DEEP SPACE</span>
+            </button>
+          </aside>
+
+          <article class="history-detail" aria-live="polite">
+            <div class="history-visual" id="historyVisual">
+              <div class="history-visual-label">
+                <span id="historyCategory">REAL NASA HISTORY / THE MOON</span>
+                <h3 id="historyTitle">Apollo 11</h3>
+              </div>
+            </div>
+            <div class="history-body">
+              <div class="history-meta" id="historyMeta">1969 · LUNAR EXPLORATION</div>
+              <h4 id="historyHardware">Lunar Laser Ranging Retroreflector</h4>
+              <p id="historyDescription">Apollo 11 was the first mission to land humans on the Moon. The astronauts deployed a Lunar Laser Ranging Retroreflector on the lunar surface. Scientists on Earth can direct laser pulses toward the reflector and measure the returning light to study the Earth-Moon distance with high precision.</p>
+              <div class="fact-grid">
+                <div class="fact"><b>Mission focus</b><span id="historyFocus">Human lunar exploration and precision distance measurement.</span></div>
+                <div class="fact"><b>Key instrument</b><span id="historyInstrument">Lunar Laser Ranging Retroreflector (LLRR).</span></div>
+                <div class="fact"><b>How it works</b><span id="historyHow">Reflects laser pulses sent from Earth back toward their source.</span></div>
+                <div class="fact"><b>Scientific legacy</b><span id="historyLegacy">Supports precise measurements of the Earth-Moon distance and studies of the Earth-Moon system.</span></div>
+              </div>
+              <div class="history-media-slots">
+                <span class="slot-link">PHOTO GALLERY SLOT</span>
+                <span class="slot-link">VIDEO DOCUMENTARY SLOT</span>
+                <span class="slot-link">RESEARCH / PDF SLOT</span>
+              </div>
+              <div class="accuracy-note" id="historyNote">REAL NASA HISTORY. Add your selected archival photographs, video links and references in this mission panel.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. MOVIE INTRODUCTION: This section intentionally appears below Real NASA History. -->
+    <section class="section about-section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">The story behind the signal</div>
+          <h2>About the Movie</h2>
+          <p>A fictional future mission inspired by the real achievements of space exploration.</p>
+        </div>
+        <div class="about-layout">
+          <div class="poster-placeholder">
+            <div class="poster-small">BINTULU COSMIC HAWKS PRESENT</div>
+            <div class="poster-title">THE LAST<br><span>SIGNAL</span></div>
+            <div class="poster-foot">ECHOES BEYOND THE STARS</div>
+          </div>
+          <div class="about-copy">
+            <div class="eyebrow">Original science-fiction film</div>
+            <h2>When the signal fades,<br>the legacy remains.</h2>
+            <span class="fiction-label">FICTIONAL FUTURE · YEAR 2085</span>
+            <p>In a fictional future, Voyager 1 falls silent, leaving humanity with a mystery beyond the stars. A new rescue mission, Project Legacy, is launched aboard the Odyssey. Its crew must face the unknown, make difficult decisions and discover how the achievements of earlier explorers can guide the future.</p>
+            <p>Blending cinematic storytelling with real space exploration history, <strong>THE LAST SIGNAL: ECHOES BEYOND THE STARS</strong> invites audiences to discover the machines, instruments and scientific discoveries that continue to shape our understanding of the universe.</p>
+            <div class="movie-info">
+              <div class="info-item"><b>Project title</b><span>The Last Signal: Echoes Beyond the Stars</span></div>
+              <div class="info-item"><b>Team</b><span>Bintulu Cosmic Hawks</span></div>
+              <div class="info-item"><b>Fictional mission</b><span>Project Legacy</span></div>
+              <div class="info-item"><b>Fictional spacecraft</b><span>Odyssey</span></div>
+            </div>
+            <h3 style="font-size:12px;letter-spacing:.16em;color:#78dfff;text-transform:uppercase;margin:22px 0 8px;">Meet the crew</h3>
+            <div class="character-list">
+              <div class="character"><b>Commander Maya Chen</b><span>Mission commander</span></div>
+              <div class="character"><b>Engineer Noah Williams</b><span>Mission engineer</span></div>
+              <div class="character"><b>Dr. Alex Rivera</b><span>Mission scientist</span></div>
+            </div>
+            <p style="margin-top:22px;"><strong>Our message:</strong> The machines may fall silent, but the discoveries and knowledge they leave behind continue to inspire humanity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. ARCHIVES: Add project documents, behind-the-scenes photographs and production videos here. -->
+    <section class="section archive-section" id="archives">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Explore more</div>
+          <h2>Project Archives</h2>
+          <p>A dedicated space for supporting documents, educational resources and the making of the movie.</p>
+        </div>
+        <div class="archive-grid">
+          <div class="archive-card"><div class="icon">▤</div><h3>DOCUMENTATION</h3><p>Add project reports, research documents, mission notes and PDF resources.</p></div>
+          <div class="archive-card"><div class="icon">▣</div><h3>PHOTO GALLERY</h3><p>Add movie stills, NASA mission photographs, production photos and team activities.</p></div>
+          <div class="archive-card"><div class="icon">▷</div><h3>VIDEO ARCHIVE</h3><p>Add behind-the-scenes videos, interviews, educational clips and project updates.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <strong>BINTULU COSMIC HAWKS</strong>
+      <span>THE LAST SIGNAL: ECHOES BEYOND THE STARS · NASA SPACE APPS CHALLENGE 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    const missions = {
+      apollo: {
+        category: 'REAL NASA HISTORY / THE MOON', title: 'Apollo 11', meta: '1969 · LUNAR EXPLORATION',
+        hardware: 'Lunar Laser Ranging Retroreflector',
+        description: 'Apollo 11 was the first mission to land humans on the Moon. The astronauts deployed a Lunar Laser Ranging Retroreflector on the lunar surface. Scientists on Earth can direct laser pulses toward the reflector and measure the returning light to study the Earth-Moon distance with high precision.',
+        focus: 'Human lunar exploration and precision distance measurement.',
+        instrument: 'Lunar Laser Ranging Retroreflector (LLRR).',
+        how: 'Reflects laser pulses sent from Earth back toward their source.',
+        legacy: 'Supports precise measurements of the Earth-Moon distance and studies of the Earth-Moon system.',
+        note: 'REAL NASA HISTORY. Add Apollo 11 archival photographs, a laser-ranging video and your research references here.'
+      },
+      opportunity: {
+        category: 'REAL NASA HISTORY / MARS', title: 'Opportunity', meta: '2004-2018 · MARS EXPLORATION',
+        hardware: 'Mars Exploration Rover Opportunity',
+        description: 'Opportunity explored Meridiani Planum on Mars from 2004 until 2018. Designed for a 90-day primary mission, the rover operated for nearly 15 years. Its observations and instruments helped scientists investigate Martian rocks and soil and find evidence that liquid water had affected the environment in the planet\'s ancient past.',
+        focus: 'Explore Martian rocks and soil and investigate the planet\'s watery past.',
+        instrument: 'Panoramic Camera (Pancam), Rock Abrasion Tool (RAT) and Microscopic Imager.',
+        how: 'Pancam captured landscape images; RAT exposed fresh rock surfaces; the Microscopic Imager recorded close-up textures.',
+        legacy: 'Provided evidence that ancient Mars had environments shaped by water.',
+        note: 'REAL NASA HISTORY. Add Opportunity rover photographs, instrument demonstrations and mission documentary clips here.'
+      },
+      insight: {
+        category: 'REAL NASA HISTORY / MARS', title: 'InSight', meta: '2018-2022 · PLANETARY INTERIOR',
+        hardware: 'Seismic Experiment for Interior Structure (SEIS)',
+        description: 'NASA\'s InSight lander studied the deep interior of Mars. Rather than travelling across the surface, the stationary lander used a seismometer to detect marsquakes and other vibrations. These measurements helped scientists investigate the structure of the Martian crust, mantle and core.',
+        focus: 'Understand the internal structure and seismic activity of Mars.',
+        instrument: 'Seismic Experiment for Interior Structure (SEIS).',
+        how: 'Detects ground vibrations and seismic waves travelling through Mars.',
+        legacy: 'Helped reveal details about the Martian interior and the planet\'s seismic activity.',
+        note: 'REAL NASA HISTORY. Add InSight lander photographs, SEIS instrument visuals and marsquake explanations here.'
+      },
+      voyager: {
+        category: 'REAL NASA HISTORY / DEEP SPACE', title: 'Voyager 1', meta: 'LAUNCHED 1977 · INTERSTELLAR SPACE',
+        hardware: 'Voyager 1 spacecraft',
+        description: 'Voyager 1 is a robotic spacecraft launched by NASA in 1977 to study the outer planets and then continue into interstellar space. It is not a rover or lander left on the Moon or Mars. Its instruments and communications system have returned scientific data from farther away than any other spacecraft.',
+        focus: 'Explore the outer Solar System and the space between the stars.',
+        instrument: 'Scientific instruments and a radio communication system carried aboard the spacecraft.',
+        how: 'Collects and transmits scientific measurements and engineering data to Earth by radio.',
+        legacy: 'Expanded humanity\'s understanding of the outer planets and the interstellar environment.',
+        note: 'REAL NASA HISTORY. The silent-signal event in the movie is fictional; keep it clearly separate from Voyager 1\'s actual mission history.'
+      }
+    };
+
+    const missionButtons = document.querySelectorAll('.mission-button');
+    const fields = {
+      category: document.getElementById('historyCategory'),
+      title: document.getElementById('historyTitle'),
+      meta: document.getElementById('historyMeta'),
+      hardware: document.getElementById('historyHardware'),
+      description: document.getElementById('historyDescription'),
+      focus: document.getElementById('historyFocus'),
+      instrument: document.getElementById('historyInstrument'),
+      how: document.getElementById('historyHow'),
+      legacy: document.getElementById('historyLegacy'),
+      note: document.getElementById('historyNote')
+    };
+
+    missionButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const mission = missions[button.dataset.mission];
+        if (!mission) return;
+        missionButtons.forEach((item) => {
+          item.classList.remove('active');
+          item.setAttribute('aria-pressed', 'false');
+        });
+        button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
+        Object.keys(fields).forEach((key) => { fields[key].textContent = mission[key]; });
+      });
+    });
+  </script>
+</body>
+</html>

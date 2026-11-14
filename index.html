@@ -284,6 +284,30 @@
     .poster-placeholder .poster-title { font-size: 30px; font-weight: 900; line-height: .98; letter-spacing: .08em; text-shadow: 0 0 20px rgba(103,220,255,.35); }
     .poster-placeholder .poster-title span { color: var(--cyan); }
     .poster-placeholder .poster-foot { color: #8ba7c1; font-size: 8px; letter-spacing: .18em; }
+    /* THE LAST SIGNAL OFFICIAL MOVIE POSTER */
+
+.movie-poster-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid rgba(103,220,255,.35);
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.35),
+    0 0 30px rgba(54,141,255,.12);
+}
+
+/* RESPONSIVE POSTER */
+
+@media (max-width: 850px) {
+  .movie-poster-image {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
     .about-copy h2 { font-size: clamp(28px, 4vw, 43px); margin: 7px 0 16px; letter-spacing: .06em; }
     .about-copy p { color: #b5c5d7; font-size: 14px; }
     .movie-info { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 23px 0; }
@@ -1348,11 +1372,10 @@ the environments humans explore beyond Earth.
           <p>A fictional future mission inspired by the real achievements of space exploration.</p>
         </div>
         <div class="about-layout">
-          <div class="poster-placeholder">
-            <div class="poster-small">BINTULU COSMIC HAWKS PRESENT</div>
-            <div class="poster-title">THE LAST<br><span>SIGNAL</span></div>
-            <div class="poster-foot">ECHOES BEYOND THE STARS</div>
-          </div>
+         <img
+  src="assets/the-last-signal-poster.png"
+  alt="The Last Signal Official Movie Poster"
+  class="movie-poster-image">
           <div class="about-copy">
             <div class="eyebrow">Original science-fiction film</div>
             <h2>When the signal fades,<br>the legacy remains.</h2>

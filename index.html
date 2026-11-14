@@ -554,6 +554,123 @@
       .mission-button strong { font-size: 10px; }
       .mission-button span { font-size: 9px; }
     }
+    /* =====================================
+   NASA LUNAR EQUIPMENT INTERACTIVE MAP
+===================================== */
+
+.lunar-equipment-section {
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(31, 106, 160, .18),
+      transparent 55%
+    ),
+    #050914;
+  border-top: 1px solid var(--line);
+}
+
+.equipment-map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1448px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(103,220,255,.4);
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(54,141,255,.15);
+  line-height: 0;
+}
+
+.equipment-map-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* CLICKABLE HOTSPOTS */
+
+.equipment-hotspot {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.equipment-hotspot:hover,
+.equipment-hotspot:focus-visible {
+  border-color: var(--cyan);
+  background: rgba(103,220,255,.13);
+  box-shadow: 0 0 22px rgba(103,220,255,.45);
+  outline: none;
+}
+
+.equipment-map-hint {
+  text-align: center;
+  color: var(--cyan);
+  font-size: 11px;
+  letter-spacing: .16em;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* EQUIPMENT DETAIL LINKS */
+
+.equipment-link-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.equipment-link-card {
+  display: block;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--panel);
+  transition: .2s;
+}
+
+.equipment-link-card:hover {
+  border-color: var(--cyan);
+  background: var(--panel2);
+}
+
+.equipment-link-card strong {
+  display: block;
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+
+.equipment-link-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.equipment-link-card .explore {
+  color: var(--cyan);
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+@media (max-width: 850px) {
+  .equipment-link-grid {
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .equipment-link-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>

@@ -671,6 +671,78 @@
     grid-template-columns: 1fr;
   }
 }
+    /* =================================
+   MARS EQUIPMENT INTERACTIVE MAP
+================================= */
+
+.mars-equipment-section {
+  background:
+    radial-gradient(
+      ellipse at 50% 40%,
+      rgba(170, 65, 28, .16),
+      transparent 55%
+    ),
+    #050914;
+  border-top: 1px solid var(--line);
+}
+
+.mars-map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 1448px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(103,220,255,.4);
+  border-radius: 14px;
+  box-shadow: 0 0 40px rgba(54,141,255,.15);
+  line-height: 0;
+}
+
+.mars-map-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* CLICKABLE AREAS */
+
+.mars-hotspot {
+  position: absolute;
+  display: block;
+  z-index: 5;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.mars-hotspot:hover,
+.mars-hotspot:focus-visible {
+  border-color: #67dcff;
+  background: rgba(103,220,255,.13);
+  box-shadow: 0 0 22px rgba(103,220,255,.45);
+  outline: none;
+}
+
+.mars-map-hint {
+  text-align: center;
+  color: #67dcff;
+  font-size: 11px;
+  letter-spacing: .16em;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .mars-map-wrap {
+    border-radius: 8px;
+  }
+
+  .mars-map-hint {
+    font-size: 9px;
+  }
+}
   </style>
 </head>
 <body>

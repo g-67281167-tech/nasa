@@ -273,7 +273,12 @@
 
     /* ABOUT MOVIE */
     .about-section { background: radial-gradient(ellipse at 15% 50%, rgba(42,94,148,.17), transparent 40%), #071020; border-top: 1px solid var(--line); }
-    .about-layout { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 42px; align-items: start; }
+    .about-layout {
+  display: grid;
+  grid-template-columns: 360px minmax(0,1fr);
+  gap: 42px;
+  align-items: start;
+}
     .poster-placeholder {
       min-height: 430px; border: 1px solid rgba(103,220,255,.35); border-radius: 10px; padding: 24px 18px;
       display: flex; flex-direction: column; justify-content: space-between; text-align: center;
@@ -286,14 +291,18 @@
     .poster-placeholder .poster-foot { color: #8ba7c1; font-size: 8px; letter-spacing: .18em; }
     /* THE LAST SIGNAL OFFICIAL MOVIE POSTER */
 
+/* PROJECT LEGACY MOVIE POSTER */
+
 .movie-poster-image {
   display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: 360px;
   height: auto;
   object-fit: contain;
   border-radius: 10px;
+
   border: 1px solid rgba(103,220,255,.35);
+
   box-shadow:
     0 18px 50px rgba(0,0,0,.35),
     0 0 30px rgba(54,141,255,.12);
@@ -304,7 +313,7 @@
 @media (max-width: 850px) {
   .movie-poster-image {
     width: 100%;
-    max-width: 300px;
+    max-width: 360px;
     margin: 0 auto;
   }
 }
@@ -1373,7 +1382,7 @@ the environments humans explore beyond Earth.
         </div>
         <div class="about-layout">
          <img
-  src="assets/the-last-signal-poster.png"
+  src="assets/project-legacy-poster.png"
   alt="The Last Signal Official Movie Poster"
   class="movie-poster-image">
           <div class="about-copy">

@@ -833,10 +833,11 @@
 
 .project-legacy-banner-poster {
   display: block;
-  width: 100%;
-  max-height: 420px;
-  height: auto;
+  width: auto;
+  height: 420px;
+  max-width: 100%;
   object-fit: contain;
+  margin: 0 auto;
   border-radius: 8px;
   box-shadow: 0 12px 35px rgba(0,0,0,.5);
 }
@@ -892,12 +893,13 @@
     padding: 20px;
   }
 
-  .project-legacy-banner-poster {
-    width: auto;
-    max-width: 190px;
-    max-height: 285px;
-    margin: 0 auto;
-  }
+ .project-legacy-banner-poster {
+  width: auto;
+  height: 285px;
+  max-width: 100%;
+  margin: 0 auto;
+  object-fit: contain;
+}
 
   .project-legacy-banner-copy {
     padding: 5px;

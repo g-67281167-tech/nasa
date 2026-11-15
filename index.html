@@ -776,53 +776,6 @@
     font-size: 9px;
   }
 }
-  /* =================================
-   KUCHI 3D GAME - CYBERIX3D
-================================= */
-
-.kuchi-game-section {
-  background:
-    radial-gradient(
-      ellipse at 50% 45%,
-      rgba(43,140,190,.18),
-      transparent 55%
-    ),
-    #050914;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.kuchi-game-frame {
-  width: 100%;
-  height: min(78vh, 760px);
-  min-height: 520px;
-  overflow: hidden;
-  border: 1px solid rgba(103,220,255,.45);
-  border-radius: 12px;
-  background: #000;
-  box-shadow: 0 0 40px rgba(54,141,255,.18);
-}
-
-.kuchi-game-frame iframe {
-  width: 100%;
-  height: 100%;
-  display: block;
-  border: 0;
-  background: #000;
-}
-
-.kuchi-game-fullscreen {
-  display: flex;
-  justify-content: center;
-  margin-top: 18px;
-}
-
-@media (max-width: 560px) {
-  .kuchi-game-frame {
-    height: 70vh;
-    min-height: 420px;
-  }
-}
   </style>
 </head>
 <body>
@@ -852,7 +805,6 @@
   <a href="#archives">Archives</a>
 </nav>
         <a href="#about">The Movie</a>
-        <a href="#archives">Archives</a>
       </nav>
     </div>
   </header>
@@ -1022,70 +974,10 @@ the environments humans explore beyond Earth.
 </div>
       </div>
     </section>
-<!-- =================================
-     KUCHI 3D INTERACTIVE GAME
-     CYBERIX3D / GAMEMAKER3D
-================================= -->
 
-<section class="section kuchi-game-section"
-         id="kuchi-game">
 
-  <div class="container">
-
-    <div class="section-heading">
-
-      <div class="eyebrow">
-        INTERACTIVE LUNAR ADVENTURE
-      </div>
-
-      <h2>KUCHI 3D GAME</h2>
-
-      <p>
-        Join Kuchi on an interactive lunar adventure.
-        Explore the Moon, discover forgotten equipment
-        and experience the mission through a 3D game.
-      </p>
-
-    </div>
-
-    <!-- KUCHI GAME PLAYER -->
-
-    <div class="kuchi-game-frame">
-
-      <iframe
-        src="kuchi-game/index.html"
-        title="Kuchi 3D Interactive Game"
-        loading="lazy"
-        allow="fullscreen; autoplay; gamepad"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-    <!-- FULLSCREEN BUTTON -->
-
-    <div class="kuchi-game-fullscreen">
-
-      <a class="kuchi-button"
-         href="kuchi-game/index.html"
-         target="_blank"
-         rel="noopener noreferrer">
-
-        PLAY FULL SCREEN ↗
-
-      </a>
-
-    </div>
-
-  </div>
-
-</section>
    
-    <!-- 3. KUCHI 3D GAME - CYBERIX3D -->
-    <!-- =================================
-     KUCHI 3D INTERACTIVE GAME
-     CYBERIX3D / GAMEMAKER3D
-================================= -->
+  <!-- KUCHI 3D GAME - CYBERIX3D -->
 
 <section class="section kuchi-game-section"
          id="kuchi-game">
@@ -1108,36 +1000,116 @@ the environments humans explore beyond Earth.
 
     </div>
 
-    <!-- KUCHI GAME PLAYER -->
+    <div class="kuchi-game-layout">
 
-    <div class="kuchi-game-frame">
+      <!-- LEFT: LIVE GAME -->
 
-      <iframe
-        src="./kuchi-game/index.html"
-        title="Kuchi 3D Interactive Game"
-        loading="lazy"
-        allow="fullscreen; autoplay; gamepad"
-        allowfullscreen>
-      </iframe>
+      <div class="kuchi-game-left">
 
-    </div>
+        <div class="kuchi-game-frame">
 
-    <!-- FULL SCREEN BUTTON -->
+          <iframe
+            src="./kuchi-game/index.html"
+            title="Kuchi 3D Interactive Game"
+            loading="lazy"
+            allow="fullscreen; autoplay; gamepad"
+            allowfullscreen>
+          </iframe>
 
-    <div class="kuchi-game-fullscreen">
+        </div>
 
-      <a class="kuchi-button"
-         href="./kuchi-game/index.html"
-         target="_blank"
-         rel="noopener noreferrer">
+        <div class="kuchi-game-fullscreen">
 
-        PLAY FULL SCREEN ↗
+          <a class="kuchi-button"
+             href="./kuchi-game/index.html"
+             target="_blank"
+             rel="noopener noreferrer">
 
-      </a>
+            PLAY FULL SCREEN ↗
+
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT: GAME INFORMATION -->
+
+      <div class="kuchi-game-side">
+
+        <div class="kuchi-side-card">
+
+          <img
+            src="./assets/kuchi-moon-janitor.png"
+            alt="Kuchi The Moon Janitor"
+            class="kuchi-game-poster">
+
+          <h3 style="margin-top:14px;">
+            KUCHI: THE MOON JANITOR
+          </h3>
+
+          <p>
+            One Small Cat. One Big Mission.
+            A Cleaner Moon!
+          </p>
+
+        </div>
+
+        <div class="kuchi-side-card">
+
+          <h3>MISSION BRIEF</h3>
+
+          <p>
+            Kuchi has arrived on the Moon to carry out
+            a lunar cleanup mission. Explore the lunar
+            surface and help recover abandoned objects
+            left behind during space exploration.
+          </p>
+
+        </div>
+
+        <div class="kuchi-side-card">
+
+          <h3>GAME CONTROLS</h3>
+
+          <div class="kuchi-control-row">
+            <span>Movement</span>
+            <span class="kuchi-control-key">ARROW KEYS</span>
+          </div>
+
+          <div class="kuchi-control-row">
+            <span>Jump</span>
+            <span class="kuchi-control-key">SPACE</span>
+          </div>
+
+        </div>
+
+        <div class="kuchi-side-card">
+
+          <h3>MISSION OBJECTIVE</h3>
+
+          <div class="kuchi-objective-number">
+            5 OBJECTS
+          </div>
+
+          <p>
+            Collect all 5 abandoned objects
+            to complete Kuchi's lunar cleanup mission.
+          </p>
+
+        </div>
+
+        <div class="kuchi-game-quote">
+          "Every small action makes the Moon
+          a cleaner place."
+        </div>
+
+      </div>
 
     </div>
 
   </div>
+
 
 </section>
     <section class="section game-section" id="game">

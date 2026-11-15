@@ -776,6 +776,138 @@
     font-size: 9px;
   }
 }
+ /* =====================================
+   PROJECT LEGACY - CINEMATIC HERO BANNER
+===================================== */
+
+.project-legacy-banner {
+  position: relative;
+  width: 100%;
+  min-height: clamp(320px, 38vw, 500px);
+  margin: 28px auto 30px;
+  overflow: hidden;
+  border: 1px solid rgba(103,220,255,.4);
+  border-radius: 14px;
+  background: #050914;
+  isolation: isolate;
+  box-shadow: 0 15px 45px rgba(0,0,0,.35);
+}
+
+/* EXTENDED SPACE BACKGROUND */
+
+.project-legacy-banner::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: -2;
+  background-image:
+    url("assets/project-legacy-poster.png");
+  background-size: cover;
+  background-position: center 42%;
+  filter: blur(15px) brightness(.42);
+  transform: scale(1.08);
+}
+
+/* CINEMATIC DARK OVERLAY */
+
+.project-legacy-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgba(3,8,20,.12),
+    rgba(3,8,20,.55)
+  );
+}
+
+.project-legacy-banner-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 32%) minmax(0,1fr);
+  gap: 35px;
+  align-items: center;
+  min-height: clamp(320px, 38vw, 500px);
+  padding: clamp(18px,3vw,38px);
+}
+
+.project-legacy-banner-poster {
+  display: block;
+  width: 100%;
+  max-height: 420px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.5);
+}
+
+.project-legacy-banner-copy {
+  padding: 15px;
+}
+
+.project-legacy-banner-copy h2 {
+  color: #fff;
+  font-size: clamp(30px,5vw,65px);
+  font-weight: 900;
+  letter-spacing: .08em;
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.project-legacy-banner-copy h2 span {
+  color: var(--cyan);
+}
+
+.project-legacy-banner-copy p {
+  color: #e0eafa;
+  font-size: clamp(12px,1.5vw,18px);
+  letter-spacing: .2em;
+  line-height: 1.7;
+}
+
+.project-legacy-banner-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.project-legacy-banner-tags span {
+  border: 1px solid rgba(103,220,255,.4);
+  border-radius: 30px;
+  padding: 7px 12px;
+  color: #c9edff;
+  font-size: 9px;
+  letter-spacing: .13em;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 700px) {
+
+  .project-legacy-banner-inner {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .project-legacy-banner-poster {
+    width: auto;
+    max-width: 190px;
+    max-height: 285px;
+    margin: 0 auto;
+  }
+
+  .project-legacy-banner-copy {
+    padding: 5px;
+  }
+
+  .project-legacy-banner-tags {
+    justify-content: center;
+  }
+
+} 
   </style>
 </head>
 <body>
@@ -825,7 +957,53 @@
 <div class="project-description">
   A NASA SPACE EXPLORATION EXPERIENCE
 </div>
+<!-- PROJECT LEGACY CINEMATIC BANNER -->
 
+<div class="project-legacy-banner">
+
+  <div class="project-legacy-banner-inner">
+
+    <!-- ORIGINAL PROJECT LEGACY POSTER -->
+
+    <img
+      src="assets/project-legacy-poster.png"
+      alt="Project Legacy Official Poster"
+      class="project-legacy-banner-poster">
+
+    <!-- BANNER INFORMATION -->
+
+    <div class="project-legacy-banner-copy">
+
+      <div class="eyebrow">
+        FEATURED MISSION · ORIGINAL SCIENCE FICTION
+      </div>
+
+      <h2>
+        PROJECT <span>LEGACY</span>
+      </h2>
+
+      <p>
+        A MISSION TO RECOVER HUMANITY'S
+        LOST EXPLORERS
+      </p>
+
+      <div class="project-legacy-banner-tags">
+
+        <span>ODYSSEY</span>
+        <span>RETRIEVE</span>
+        <span>RECOVER</span>
+        <span>RESTORE</span>
+        <span>RETURN</span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- END PROJECT LEGACY BANNER -->
 <div class="project-divider"></div>
 
 <!-- OFFICIAL MOVIE TITLE -->

@@ -776,6 +776,53 @@
     font-size: 9px;
   }
 }
+  /* =================================
+   KUCHI 3D GAME - CYBERIX3D
+================================= */
+
+.kuchi-game-section {
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      rgba(43,140,190,.18),
+      transparent 55%
+    ),
+    #050914;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.kuchi-game-frame {
+  width: 100%;
+  height: min(78vh, 760px);
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid rgba(103,220,255,.45);
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 0 40px rgba(54,141,255,.18);
+}
+
+.kuchi-game-frame iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  background: #000;
+}
+
+.kuchi-game-fullscreen {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+@media (max-width: 560px) {
+  .kuchi-game-frame {
+    height: 70vh;
+    min-height: 420px;
+  }
+}
   </style>
 </head>
 <body>
@@ -795,6 +842,7 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#trailer">Trailer</a>
         <a href="#kuchi">Kuchi Series</a>
+        <a href="#kuchi-game">Kuchi Game</a>
         <a href="#game">Game</a>
         <a href="#history">Real History</a>
         <!-- NEW LUNAR EQUIPMENT MENU -->
@@ -1032,7 +1080,66 @@ the environments humans explore beyond Earth.
   </div>
 
 </section>
-    <!-- 3. GAME: Replace the game placeholder with your Scratch project embed iframe. -->
+   
+    <!-- 3. KUCHI 3D GAME - CYBERIX3D -->
+    <!-- =================================
+     KUCHI 3D INTERACTIVE GAME
+     CYBERIX3D / GAMEMAKER3D
+================================= -->
+
+<section class="section kuchi-game-section"
+         id="kuchi-game">
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        INTERACTIVE LUNAR ADVENTURE
+      </div>
+
+      <h2>KUCHI 3D GAME</h2>
+
+      <p>
+        Join Kuchi on an interactive lunar adventure.
+        Explore the Moon, discover forgotten equipment
+        and experience the mission through a 3D game.
+      </p>
+
+    </div>
+
+    <!-- KUCHI GAME PLAYER -->
+
+    <div class="kuchi-game-frame">
+
+      <iframe
+        src="./kuchi-game/index.html"
+        title="Kuchi 3D Interactive Game"
+        loading="lazy"
+        allow="fullscreen; autoplay; gamepad"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <!-- FULL SCREEN BUTTON -->
+
+    <div class="kuchi-game-fullscreen">
+
+      <a class="kuchi-button"
+         href="./kuchi-game/index.html"
+         target="_blank"
+         rel="noopener noreferrer">
+
+        PLAY FULL SCREEN ↗
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
     <section class="section game-section" id="game">
       <div class="container game-layout">
         <div class="game-copy">
